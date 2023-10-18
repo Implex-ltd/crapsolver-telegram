@@ -82,7 +82,7 @@ func handleRefillCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 				return
 			}
 
-			sendMessage(bot, message.Chat.ID, fmt.Sprintf("Following account ID with balance %v gonna be refilled: %v", u.Data.Balance, u.Data.ID))
+			sendMessage(bot, message.Chat.ID, fmt.Sprintf("⚠️ Following account gonna be refilled\n\n- ID %v\n- Current balance: %v", u.Data.ID, u.Data.Balance))
 		} else {
 			sendMessage(bot, message.Chat.ID, "A new account will be created and the api key sent after confirmation by the blockchain.")
 		}
@@ -142,5 +142,5 @@ func handleSuccessfulOrder(bot *tgbotapi.BotAPI, message *tgbotapi.Message, acco
 		return
 	}
 
-	sendMessage(bot, message.Chat.ID, fmt.Sprintf("Thanks !, account: %v, balance: %v", uid, u.Data.Balance))
+	sendMessage(bot, message.Chat.ID, fmt.Sprintf("✅ Thanks !, account: %v, balance: %v", uid, u.Data.Balance))
 }
