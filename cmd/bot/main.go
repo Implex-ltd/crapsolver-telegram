@@ -36,7 +36,7 @@ func main() {
 		case "refill":
 			handleRefillCommand(bot, update.Message)
 		case "balance":
-			sendMessage(bot, update.Message.Chat.ID, "I'm ok.")
+			handleGetUserCommand(bot, update.Message)
 		default:
 			sendMessage(bot, update.Message.Chat.ID, "I don't know that command, use /help")
 		}
@@ -143,4 +143,22 @@ func handleSuccessfulOrder(bot *tgbotapi.BotAPI, message *tgbotapi.Message, acco
 	}
 
 	sendMessage(bot, message.Chat.ID, fmt.Sprintf("✅ Thanks !, account: %v, balance: %v", uid, u.Data.Balance))
+}
+
+func handleGetUserCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
+	split := strings.Fields(message.Text)
+
+	if len(split) < 2 {
+		sendMessage(bot, message.Chat.ID, "Invalid command")
+		return
+	}
+
+	w := &wrapper.PrivateWrapper{}
+	u, err := w.GetUser(split[1])
+	if err != nil {
+		sendMessage(bot, message.Chat.ID, "This api-key is invalid")
+		return
+	}
+
+	sendMessage(bot, message.Chat.ID, fmt.Sprintf("- ID %v\n- Current balance: %v", u.Data.ID, u.Data.Balance))
 }
