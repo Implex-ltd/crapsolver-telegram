@@ -78,6 +78,7 @@ func handleRefillCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 			w := &wrapper.PrivateWrapper{}
 			u, err := w.GetUser(account)
 			if err != nil {
+				sendMessage(bot, message.Chat.ID, "This api-key is invalid")
 				return
 			}
 

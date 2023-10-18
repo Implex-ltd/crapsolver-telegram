@@ -44,6 +44,8 @@ func (w *PrivateWrapper) GetUser(user string) (*GetUserResponse, error) {
 		return nil, err
 	}
 
+	fmt.Println(response)
+
 	return &response, nil
 }
 

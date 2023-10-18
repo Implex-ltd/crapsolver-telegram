@@ -11,15 +11,24 @@ type PrivateWrapper struct {
 
 type CreateUserResponse struct {
 	Data []struct {
-		ID string `json:"id"`
+		Balance            int    `json:"balance"`
+		ID                 string `json:"id"`
+		SolvedHcaptcha     int    `json:"solved_hcaptcha"`
+		ThreadMaxHcaptcha  int    `json:"thread_max_hcaptcha"`
+		ThreadUsedHcaptcha int    `json:"thread_used_hcaptcha"`
 	} `json:"data"`
+	Success bool `json:"success"`
 }
 
 type GetUserResponse struct {
 	Data struct {
-		ID      string `json:"id"`
-		Balance string `json:"balance"`
+		Balance            int    `json:"balance"`
+		ID                 string `json:"id"`
+		SolvedHcaptcha     int    `json:"solved_hcaptcha"`
+		ThreadMaxHcaptcha  int    `json:"thread_max_hcaptcha"`
+		ThreadUsedHcaptcha int    `json:"thread_used_hcaptcha"`
 	} `json:"data"`
+	Success bool `json:"success"`
 }
 
 type AddBalanceResponse struct {
