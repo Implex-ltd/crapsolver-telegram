@@ -1,14 +1,15 @@
 package main
 
 import (
-	"bot/internal/invoice"
-	"bot/internal/wrapper"
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
 
+	"bot/internal/invoice"
+	"bot/internal/wrapper"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+
 )
 
 var botToken = "5953767481:AAHh6ZIpGj7fd-IL9U9T-CzEXbRjeUb10jg"
@@ -32,7 +33,7 @@ func main() {
 
 		switch update.Message.Command() {
 		case "help":
-			sendMessage(bot, update.Message.Chat.ID, "https://crapsolver.gitbook.io/readme/account/introduction")
+			sendMessage(bot, update.Message.Chat.ID, "Everything is here: https://crapsolver.gitbook.io/readme/account/introduction")
 		case "refill":
 			handleRefillCommand(bot, update.Message)
 		case "balance":
