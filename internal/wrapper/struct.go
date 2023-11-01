@@ -29,6 +29,6 @@ type GetUserResponse struct {
 }
 
 type AddBalanceResponse struct {
-	Data    User `json:"data"`
+	//Data    User `json:"data"`
 	Success bool `json:"success"`
 }
